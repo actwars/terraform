@@ -10,3 +10,7 @@ variable "file_site_dir" {
   type    = string
   default = "./site/"
 }
+variable "domaine_name" {
+  type    = string
+  default = "www.zoulouterie.fr"
+}
