@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "site" {
   force_destroy = true
 }
 resource "aws_s3_object" "object" {
-  bucket   = var.bucket_name
+  bucket   = aws_s3_bucket.site.bucket
   for_each = fileset("${var.file_site_dir}", "**")
   key      = each.value
   source   = "${var.file_site_dir}${each.value}"
@@ -11,12 +11,12 @@ resource "aws_s3_object" "object" {
   acl      = "public-read"
 }
 resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
-  bucket = var.bucket_name
+  bucket = aws_s3_bucket.site.bucket
   policy = file("policy/policy_s3.json")
 }
 
 resource "aws_s3_bucket_website_configuration" "site" {
-  bucket = var.bucket_name
+  bucket = aws_s3_bucket.site.bucket
 
   index_document {
     suffix = "index.html"

@@ -12,5 +12,5 @@ variable "file_site_dir" {
 }
 variable "domaine_name" {
   type    = string
-  default = "www.zoulouterie.fr"
+  default = "www.zoulouterie.link"
 }

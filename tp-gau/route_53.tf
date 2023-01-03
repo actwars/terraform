@@ -3,7 +3,7 @@ resource "aws_route53_zone" "main" {
 }
 
 resource "aws_route53_record" "create-type-a" {
-  zone_id = "aws_route53_zone.${var.domaine_name}.zone_id"
+  zone_id = aws_route53_zone.main.zone_id
   name    = var.domaine_name
   type    = "A"
   alias {
