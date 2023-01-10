@@ -14,7 +14,7 @@ resource "aws_apigatewayv2_integration" "lambda_integration" {
   integration_uri = aws_lambda_function.lambda_count.invoke_arn
 }
 
-resource "aws_apigatewayv2_route" "example" {
+resource "aws_apigatewayv2_route" "api_route" {
   api_id    = aws_apigatewayv2_api.lambda_count_api.id
   route_key = "GET /count"
   target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
@@ -26,7 +26,7 @@ resource "aws_apigatewayv2_stage" "api_stage" {
   auto_deploy = true
 }
 
-#resource "aws_api_gateway_domain_name" "example" {
+#resource "aws_api_gateway_domain_name" "api_domain" {
 #  certificate_arn = aws_acm_certificate_validation.example.certificate_arn
 #  domain_name     = "api.example.com"
 #}
