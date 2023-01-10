@@ -12,3 +12,15 @@ resource "aws_route53_record" "create-type-a" {
     evaluate_target_health = true
   }
 }
+
+#resource "aws_route53_record" "gw_zone" {
+#  name    = aws_api_gateway_domain_name.example.domain_name
+#  type    = "A"
+#  zone_id = aws_route53_zone.example.id
+#
+#  alias {
+#    evaluate_target_health = true
+#    name                   = aws_api_gateway_domain_name.example.cloudfront_domain_name
+#    zone_id                = aws_api_gateway_domain_name.example.cloudfront_zone_id
+#  }
+#}

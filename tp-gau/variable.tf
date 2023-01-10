@@ -14,3 +14,15 @@ variable "domaine_name" {
   type    = string
   default = "www.zoulouterie.link"
 }
+variable "gw_name" {
+  type    = string
+  default = "lambda_count_gw_api"
+}
+variable "lambda_zip" {
+  type    = string
+  default = "./lambda/add_and_count.zip"
+}
+variable "lambda_handler" {
+  type    = string
+  default = "test.py"
+}
