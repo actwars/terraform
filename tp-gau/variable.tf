@@ -10,6 +10,10 @@ variable "file_site_dir" {
   type    = string
   default = "./site/"
 }
+variable "policy_s3" {
+  type    = string
+  default = "policy/policy_s3.json"
+}
 variable "domaine_name" {
   type    = string
   default = "www.zoulouterie.link"
