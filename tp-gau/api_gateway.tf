@@ -9,9 +9,10 @@ resource "aws_apigatewayv2_integration" "lambda_integration" {
   api_id           = aws_apigatewayv2_api.lambda_count_api.id
   integration_type = "AWS_PROXY"
 
-  connection_type = "INTERNET"
-  description     = "claim and send new count"
-  integration_uri = aws_lambda_function.lambda_count.invoke_arn
+  connection_type        = "INTERNET"
+  description            = "claim and send new count"
+  integration_uri        = aws_lambda_function.lambda_count.invoke_arn
+  payload_format_version = "2.0"
 }
 
 resource "aws_apigatewayv2_route" "api_route" {

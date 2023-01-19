@@ -14,7 +14,7 @@ resource "aws_s3_object" "object" {
 
 resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
   bucket = aws_s3_bucket.site.bucket
-  policy = var.policy_s3
+  policy = file("policy/policy_s3.json")
 }
 
 resource "aws_s3_bucket_website_configuration" "site" {

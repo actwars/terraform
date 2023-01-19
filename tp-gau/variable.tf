@@ -10,10 +10,10 @@ variable "file_site_dir" {
   type    = string
   default = "./site/"
 }
-variable "policy_s3" {
-  type    = string
-  default = "policy/policy_s3.json"
-}
+#variable "policy_s3" {
+#  type    = string
+#  default = "file("policy/policy_s3.json")"
+#}
 variable "domaine_name" {
   type    = string
   default = "www.zoulouterie.link"
@@ -28,5 +28,5 @@ variable "lambda_zip" {
 }
 variable "lambda_handler" {
   type    = string
-  default = "test.py"
+  default = "index.handler"
 }
