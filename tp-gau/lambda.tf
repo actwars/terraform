@@ -7,7 +7,7 @@ resource "aws_lambda_function" "lambda_count" {
 }
 
 resource "aws_iam_role" "lambda_exec" {
-  name = "serverless_lambda"
+  name = var.lambda_name
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -28,13 +28,18 @@ resource "aws_iam_role_policy_attachment" "lambda_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
+  name = "lambda_invoke_dynamodb_policy"
+  role = aws_iam_role.lambda_exec.id
+
+  policy = file("./policy/lambda_invoke_dynamo.js")
+}
+
+
 resource "aws_lambda_permission" "api_gw" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambda_count.function_name
   principal     = "apigateway.amazonaws.com"
-
-  # The "/*/*" portion grants access from any method on any resource
-  # within the API Gateway REST API.
-  source_arn = "${aws_apigatewayv2_api.lambda_count_api.execution_arn}/*/*"
+  source_arn    = "${aws_apigatewayv2_api.lambda_count_api.execution_arn}/*/*"
 }

@@ -9,5 +9,5 @@ output "api_name" {
   value = aws_apigatewayv2_api.lambda_count_api.id
 }
 output "api_endpoint" {
-  value = aws_apigatewayv2_api.lambda_count_api.api_endpoint
+  value = aws_apigatewayv2_stage.api_stage.invoke_url
 }

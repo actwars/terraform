@@ -8,6 +8,10 @@ import {
 
 const new_visit = Date.now();
 
+const one_day = 86400000
+
+const old_day = parseInt(new_visit) - parseInt(one_day)
+
 const client = new DynamoDBClient({});
 
 const dynamo = DynamoDBDocumentClient.from(client);
@@ -17,6 +21,7 @@ const tableName = "count_visit";
 export const handler = async (event, context) => {
   let body;
   let statusCode = 200;
+  let old_day
   const headers = {
     "Content-Type": "application/json",
   };
@@ -54,6 +59,7 @@ export const handler = async (event, context) => {
   return {
     statusCode,
     body,
+    old_day,
     headers,
   };
 };
