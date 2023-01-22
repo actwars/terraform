@@ -10,7 +10,7 @@
                 "dynamodb:Scan",
                 "dynamodb:UpdateItem"
             ],
-            "Resource": "arn:aws:dynamodb:*:830978417405:table/count_visit"
+            "Resource": "arn:aws:dynamodb:*:*:table/count_visit"
         }
     ]
 }
