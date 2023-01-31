@@ -23,7 +23,7 @@ variable "gw_name" {
   default = "lambda_count_gw_api"
 }
 variable "lambda_name" {
-  type = string
+  type    = string
   default = "serverless_lambda"
 }
 variable "lambda_zip" {
