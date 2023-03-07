@@ -4,7 +4,7 @@ variable "region" {
 }
 variable "bucket_name" {
   type    = string
-  default = "zoulouterie-static-website"
+  default = "zoulouterie-static.com"
 }
 variable "file_site_dir" {
   type    = string
